@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Letter Selection</title>
+        <base href="/repository-name/">  <!-- Add this line -->
+        <title>Cute Letter</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <link
             href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Courier+Prime:wght@700&family=Inter:wght@400;600&display=swap"
@@ -293,13 +294,21 @@ const mainContent = document.getElementById('main-content');
 const letterLinks = document.querySelectorAll('.letter-link');
 let isVideoPlaying = false;
 
-// Map letters to video files
+// Add this at the top of your script section to handle GitHub Pages paths
+
+const isGitHubPages = window.location.hostname === 'https://m-ayush-2004.github.io' || 
+                      window.location.pathname.includes('/trying-things/');
+
+const basePath = isGitHubPages ? '/trying-things' : '';
+
+// Update the video map with basePath
 const videoMap = {
-    0: 'assets/video1.mp4',  // Letter 1
-    1: 'assets/video2.mp4',  // Letter 2
-    2: 'assets/video3.mp4',  // Letter 3
-    3: 'assets/video4.mp4'   // Letter 4
+    0: `${basePath}/assets/video1.mp4`,  // Letter 1
+    1: `${basePath}/assets/video2.mp4`,  // Letter 2
+    2: `${basePath}/assets/video3.mp4`,  // Letter 3
+    3: `${basePath}/assets/video4.mp4`   // Letter 4
 };
+
 
 function openVideo(clickedEnvelope, letterIndex) {
     if (isVideoPlaying) return; 
@@ -387,3 +396,4 @@ function closeVideo() {
         </script>
     </body>
 </html>
+
